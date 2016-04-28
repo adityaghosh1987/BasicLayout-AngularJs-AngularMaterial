@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<title>Web Dev Assignment</title>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.css">
+	<link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+	<!-- Angular Material Dependencies -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.js"></script>
+	
+	<script src="script/main.js"></script>
+	<div ng-app="webApp" ng-controller="mainController as mainCtrl" class="app-body">
+			<div layout="column" class="app-body">
+				<div class="header">
+					<div class="header-container" layout="row" layout-align="end center">
+						<md-button class="md-raised md-primary default-button">Login</md-button>
+						<md-button class="md-raised md-primary default-button">Sign up</md-button>
+					</div>
+				</div>
+				<div flex class="content">
+					<div flex class="content-body">
+						{{mainCtrl.name}}
+					</div>
+				</div>
+			</div>
+	</div>
+</body>
+</html>
