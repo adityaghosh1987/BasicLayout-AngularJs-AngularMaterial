@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+	<title>Web Dev Assignment</title>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.css">
+	<!--<link rel="stylesheet" href="style/main.css">-->
+</head>
+<body>
+	<!-- Inline Styles-->
+	<style>
+		html, body { 
+			margin: 0px; 
+			padding: 0px; 
+			border: 0px; 
+		}
+		body{
+			height: 100%;
+			width: 100%;
+		}
+		p{
+			margin: 0;
+		}
+		.app-body{
+			height:100%;
+		}
+		.header{
+			height:50px;
+			background-color:rgb(255,102,1);
+			box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+			-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+			-moz-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+		}
+		.header-container{
+			height:100%;
+		}
+		.content{
+			/*background-image: url("../images/content-body.png");
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;*/
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		.default-button{
+			min-height: 26px;
+			line-height: 26px;
+			font-size: 11px;
+			padding: 0px;
+			min-width: 50px;
+			margin-left: 0px;
+			background-color: rgb(34,34,34) !important;
+			color: rgb(255,255,255) !important;
+		}
+		.content-body{
+			font-size: 13px;
+			font-weight: bold;
+			padding: 10px;
+			border: 1px solid rgb(255,102,1);
+			border-radius: 5px;
+			width: 80%;
+			margin: 10px auto;
+		}
+	</style>
+	<!-- End of Inline Style-->
+	
+	<!-- Angular Material Dependencies -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.js"></script>
+	
+	<!--<script src="script/main.js"></script>-->
+	<!-- Inline Script-->
+	<script>
+		(function() {
+		  'use strict';
+		  angular.module('webApp', ['ngMaterial'])
+			.controller('mainController', function($scope){
+				var mainCtrl = this;
+				
+				mainCtrl.name = 'Aditya Ghosh';
+			})
+			.service('appService', [function appService(){
+				this.getAppData  = function(){
+					return $http({method: 'GET',url: ''}).then(function successCallback(response) {
+									return response.data;
+						   }, function errorCallback(response) {
+									return response.data;
+						   });
+				}
+			}])
+			.factory('appFactory', [function appFactory(){
+				var appFactory = {};
+				return appFactory;
+			}])
+			.directive('component',['RecursionHelper', function(RecursionHelper){
+				var componentDef = {
+					restrict : 'E',
+					scope : {},
+					template : '<div ng-repeat="node in treeData">'+
+							   '</div>',
+					link: function(scope, element, attr) {
+						
+					}
+				};
+				return componentDef;
+			}]);
+		})();
+	</script>
+	<!-- End of Inline Script-->
+	<div ng-app="webApp" ng-controller="mainController as mainCtrl" class="app-body">
+			<div layout="column" class="app-body">
+				<div class="header">
+					<div class="header-container" layout="row" layout-align="end center">
+						<md-button class="md-raised md-primary default-button">Login</md-button>
+						<md-button class="md-raised md-primary default-button">Sign up</md-button>
+					</div>
+				</div>
+				<div flex class="content">
+					<div flex class="content-body">
+						{{mainCtrl.name}}
+					</div>
+				</div>
+			</div>
+	</div>
+</body>
+</html>
